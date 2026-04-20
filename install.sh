@@ -6,10 +6,12 @@ set -euo pipefail
 
 SKILLS_DIR="${HOME}/.claude/skills"
 TOOLKIT_DIR="${HOME}/.claude-toolkit-sources"
-MARKETPLACE="claude-plugins-official"
-MARKETPLACE_SOURCE="anthropics/claude-plugins-official"
 
-PLUGINS=(
+# Marketplace 1: official Anthropic plugins
+OFFICIAL_MP="claude-plugins-official"
+OFFICIAL_SRC="anthropics/claude-plugins-official"
+
+OFFICIAL_PLUGINS=(
   superpowers
   frontend-design
   code-review
@@ -27,6 +29,46 @@ PLUGINS=(
   vercel
   wordpress.com
   zapier
+)
+
+# Marketplace 2: Trail of Bits security & devops skills
+TOB_MP="trailofbits"
+TOB_SRC="trailofbits/skills"
+
+TOB_PLUGINS=(
+  agentic-actions-auditor
+  ask-questions-if-underspecified
+  audit-context-building
+  burpsuite-project-parser
+  claude-in-chrome-troubleshooting
+  constant-time-analysis
+  culture-index
+  debug-buttercup
+  devcontainer-setup
+  differential-review
+  dimensional-analysis
+  dwarf-expert
+  entry-point-analyzer
+  firebase-apk-scanner
+  fp-check
+  gh-cli
+  git-cleanup
+  insecure-defaults
+  let-fate-decide
+  modern-python
+  property-based-testing
+  seatbelt-sandboxer
+  second-opinion
+  semgrep-rule-creator
+  semgrep-rule-variant-creator
+  sharp-edges
+  skill-improver
+  spec-to-code-compliance
+  supply-chain-risk-auditor
+  testing-handbook-skills
+  variant-analysis
+  yara-authoring
+  zeroize-audit
 )
 
 CUSTOM_SKILLS=(
@@ -50,22 +92,34 @@ color_blue "▶ Claude Code Toolkit installer"
 require_cmd claude
 require_cmd git
 
-color_blue "▶ Ensuring marketplace '${MARKETPLACE}' is registered"
-if ! claude plugin marketplace list 2>/dev/null | grep -q "${MARKETPLACE}"; then
-  claude plugin marketplace add "${MARKETPLACE_SOURCE}"
-else
-  color_green "  already configured"
-fi
-
-color_blue "▶ Installing ${#PLUGINS[@]} plugins"
-for p in "${PLUGINS[@]}"; do
-  printf '  → %s ... ' "$p"
-  if claude plugin install "${p}@${MARKETPLACE}" >/dev/null 2>&1; then
-    color_green "ok"
+ensure_marketplace() {
+  local mp="$1" src="$2"
+  color_blue "▶ Ensuring marketplace '${mp}' is registered"
+  if ! claude plugin marketplace list 2>/dev/null | grep -q "${mp}"; then
+    claude plugin marketplace add "${src}"
   else
-    color_yellow "skipped (already installed or unavailable)"
+    color_green "  already configured"
   fi
-done
+}
+
+install_plugins() {
+  local mp="$1"; shift
+  color_blue "▶ Installing $# plugins from '${mp}'"
+  for p in "$@"; do
+    printf '  → %s ... ' "$p"
+    if claude plugin install "${p}@${mp}" >/dev/null 2>&1; then
+      color_green "ok"
+    else
+      color_yellow "skipped (already installed or unavailable)"
+    fi
+  done
+}
+
+ensure_marketplace "${OFFICIAL_MP}" "${OFFICIAL_SRC}"
+install_plugins "${OFFICIAL_MP}" "${OFFICIAL_PLUGINS[@]}"
+
+ensure_marketplace "${TOB_MP}" "${TOB_SRC}"
+install_plugins "${TOB_MP}" "${TOB_PLUGINS[@]}"
 
 color_blue "▶ Cloning custom skills into ${TOOLKIT_DIR}"
 mkdir -p "${TOOLKIT_DIR}" "${SKILLS_DIR}"

@@ -14,30 +14,38 @@
 
 $ErrorActionPreference = 'Stop'
 
-$SkillsDir         = Join-Path $env:USERPROFILE '.claude\skills'
-$ToolkitDir        = Join-Path $env:USERPROFILE '.claude-toolkit-sources'
-$HooksDir          = Join-Path $env:USERPROFILE '.claude\hooks'
-$Marketplace       = 'claude-plugins-official'
-$MarketplaceSource = 'anthropics/claude-plugins-official'
+$SkillsDir   = Join-Path $env:USERPROFILE '.claude\skills'
+$ToolkitDir  = Join-Path $env:USERPROFILE '.claude-toolkit-sources'
+$HooksDir    = Join-Path $env:USERPROFILE '.claude\hooks'
 
-$Plugins = @(
-  'superpowers',
-  'frontend-design',
-  'code-review',
-  'security-guidance',
-  'github',
-  'gitlab',
-  'playwright',
-  'ralph-loop',
-  'figma',
-  'skill-creator',
-  'hookify',
-  'supabase',
-  'stripe',
-  'wix',
-  'vercel',
-  'wordpress.com',
-  'zapier'
+# Marketplace 1: official Anthropic plugins
+$OfficialMp  = 'claude-plugins-official'
+$OfficialSrc = 'anthropics/claude-plugins-official'
+
+$OfficialPlugins = @(
+  'superpowers', 'frontend-design', 'code-review', 'security-guidance',
+  'github', 'gitlab', 'playwright', 'ralph-loop', 'figma',
+  'skill-creator', 'hookify', 'supabase', 'stripe', 'wix',
+  'vercel', 'wordpress.com', 'zapier'
+)
+
+# Marketplace 2: Trail of Bits security & devops skills
+$TobMp  = 'trailofbits'
+$TobSrc = 'trailofbits/skills'
+
+$TobPlugins = @(
+  'agentic-actions-auditor', 'ask-questions-if-underspecified',
+  'audit-context-building', 'burpsuite-project-parser',
+  'claude-in-chrome-troubleshooting', 'constant-time-analysis',
+  'culture-index', 'debug-buttercup', 'devcontainer-setup',
+  'differential-review', 'dimensional-analysis', 'dwarf-expert',
+  'entry-point-analyzer', 'firebase-apk-scanner', 'fp-check',
+  'gh-cli', 'git-cleanup', 'insecure-defaults', 'let-fate-decide',
+  'modern-python', 'property-based-testing', 'seatbelt-sandboxer',
+  'second-opinion', 'semgrep-rule-creator', 'semgrep-rule-variant-creator',
+  'sharp-edges', 'skill-improver', 'spec-to-code-compliance',
+  'supply-chain-risk-auditor', 'testing-handbook-skills',
+  'variant-analysis', 'yara-authoring', 'zeroize-audit'
 )
 
 $CustomSkills = @(
@@ -61,25 +69,35 @@ Write-Step 'Claude Code Toolkit installer (Windows)'
 Require-Cmd 'claude'
 Require-Cmd 'git'
 
-Write-Step "Ensuring marketplace '$Marketplace' is registered"
-$mp = & claude plugin marketplace list 2>$null
-if ($mp -notmatch [regex]::Escape($Marketplace)) {
-  & claude plugin marketplace add $MarketplaceSource | Out-Null
-  Write-Ok 'added'
-} else {
-  Write-Ok 'already configured'
-}
-
-Write-Step "Installing $($Plugins.Count) plugins"
-foreach ($p in $Plugins) {
-  Write-Host "  → $p ... " -NoNewline
-  try {
-    & claude plugin install "$p@$Marketplace" *> $null
-    if ($LASTEXITCODE -eq 0) { Write-Ok 'ok' } else { Write-Warn2 'skipped' }
-  } catch {
-    Write-Warn2 'skipped (already installed or unavailable)'
+function Ensure-Marketplace($mp, $src) {
+  Write-Step "Ensuring marketplace '$mp' is registered"
+  $existing = & claude plugin marketplace list 2>$null
+  if ($existing -notmatch [regex]::Escape($mp)) {
+    & claude plugin marketplace add $src | Out-Null
+    Write-Ok 'added'
+  } else {
+    Write-Ok 'already configured'
   }
 }
+
+function Install-Plugins($mp, $plugins) {
+  Write-Step "Installing $($plugins.Count) plugins from '$mp'"
+  foreach ($p in $plugins) {
+    Write-Host "  → $p ... " -NoNewline
+    try {
+      & claude plugin install "$p@$mp" *> $null
+      if ($LASTEXITCODE -eq 0) { Write-Ok 'ok' } else { Write-Warn2 'skipped' }
+    } catch {
+      Write-Warn2 'skipped (already installed or unavailable)'
+    }
+  }
+}
+
+Ensure-Marketplace $OfficialMp $OfficialSrc
+Install-Plugins   $OfficialMp $OfficialPlugins
+
+Ensure-Marketplace $TobMp $TobSrc
+Install-Plugins   $TobMp $TobPlugins
 
 Write-Step "Cloning custom skills into $ToolkitDir"
 New-Item -ItemType Directory -Path $ToolkitDir -Force | Out-Null

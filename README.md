@@ -204,7 +204,7 @@ cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
 
 ### One-shot install (recommended)
 
-The bootstrap installer adds the official marketplace, installs all 17 plugins, clones the public custom skills, and copies the deploy hook.
+The bootstrap installer registers two marketplaces (Anthropic official + Trail of Bits security skills), installs 17 official plugins + 33 Trail of Bits plugins, clones the public custom skills, and copies the deploy hook.
 
 ```bash
 # macOS / Linux / WSL
@@ -235,8 +235,12 @@ After it finishes:
 git clone https://github.com/Anic888/russian-text-quality.git
 ln -s $(pwd)/russian-text-quality ~/.claude/skills/russian-text-quality
 
-# Plugin
+# Plugin from Anthropic marketplace
 claude plugin install superpowers@claude-plugins-official
+
+# Plugin from Trail of Bits marketplace
+claude plugin marketplace add trailofbits/skills
+claude plugin install firebase-apk-scanner@trailofbits
 ```
 
 ### Add the Deploy Hook
