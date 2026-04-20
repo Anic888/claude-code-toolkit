@@ -202,23 +202,41 @@ cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
 
 ## Quick Start
 
-### Install a Custom Skill
+### One-shot install (recommended)
+
+The bootstrap installer adds the official marketplace, installs all 17 plugins, clones the public custom skills, and copies the deploy hook.
 
 ```bash
-# Clone and symlink
+# macOS / Linux / WSL
+git clone https://github.com/Anic888/claude-code-toolkit.git
+cd claude-code-toolkit
+./install.sh
+```
+
+```powershell
+# Windows (PowerShell 5.1+)
+git clone https://github.com/Anic888/claude-code-toolkit.git
+cd claude-code-toolkit
+./install.ps1
+```
+
+After it finishes:
+
+1. Restart Claude Code so plugins load.
+2. Re-authenticate MCP connectors via the claude.ai web UI (Canva, Figma, Hugging Face, Supabase, Vercel, Wix).
+3. Add the predeploy-audit hook to `~/.claude/settings.json` if you want it active (snippet below).
+
+> **Windows note:** the deploy hook is bash. For full parity, run `install.sh` inside WSL2 Ubuntu instead of the native PowerShell installer.
+
+### Manual install (single skill or plugin)
+
+```bash
+# Custom skill
 git clone https://github.com/Anic888/russian-text-quality.git
 ln -s $(pwd)/russian-text-quality ~/.claude/skills/russian-text-quality
 
-# Or for predeploy-audit
-git clone https://github.com/Anic888/predeploy-audit-nextjs.git
-ln -s $(pwd)/predeploy-audit-nextjs/skill ~/.claude/skills/predeploy-audit
-```
-
-### Install a Plugin
-
-```bash
-# In Claude Code CLI
-/install-plugin superpowers@claude-plugins-official
+# Plugin
+claude plugin install superpowers@claude-plugins-official
 ```
 
 ### Add the Deploy Hook
@@ -236,8 +254,10 @@ chmod +x ~/.claude/hooks/predeploy-audit-gate.sh
 ```
 claude-code-toolkit/
 ├── README.md              # This file
-├── SKILLS.md              # Full skills catalog (88+)
+├── SKILLS.md              # Full skills catalog (93+)
 ├── PLUGINS.md             # Plugins & MCP servers detail
+├── install.sh             # Bootstrap installer for macOS / Linux / WSL
+├── install.ps1            # Bootstrap installer for Windows PowerShell
 ├── hooks/
 │   └── predeploy-audit-gate.sh   # Custom PreToolUse deploy hook
 └── LICENSE
