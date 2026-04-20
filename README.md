@@ -8,7 +8,7 @@
   <strong>Production-tested skills, plugins, hooks, and MCP integrations for Claude Code — Anthropic's agentic coding CLI.</strong>
 </p>
 
-[![Skills](https://img.shields.io/badge/skills-88+-8B5CF6)](./SKILLS.md)
+[![Skills](https://img.shields.io/badge/skills-93+-8B5CF6)](./SKILLS.md)
 [![Plugins](https://img.shields.io/badge/plugins-17-06B6D4)](./PLUGINS.md)
 [![MCP Servers](https://img.shields.io/badge/MCP_servers-10-F59E0B)](./PLUGINS.md#mcp-servers)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
@@ -89,7 +89,7 @@ node predeploy-audit.mjs /path/to/your/app
 
 ---
 
-## Installed Skills (88+)
+## Installed Skills (93+)
 
 Full catalog with descriptions: **[SKILLS.md](./SKILLS.md)**
 
@@ -106,6 +106,8 @@ Full catalog with descriptions: **[SKILLS.md](./SKILLS.md)**
 | Code Quality | 8+ | debugging-code, second-opinion, property-based-testing |
 | Blockchain | 5+ | entry-point-analyzer, token-integration-analyzer, spec-to-code-compliance |
 | Productivity | 10+ | avoid-ai-writing, let-fate-decide, marketing-ideas, youtube-transcript |
+| Personal & Reflection | 3 | psychologist, astrologer, cosmic-therapist |
+| Creative AI | 2 | **image-studio** (custom), design-creator |
 | Localization | 1 | **russian-text-quality** (custom) |
 
 ---

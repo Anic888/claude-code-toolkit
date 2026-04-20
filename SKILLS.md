@@ -1,6 +1,6 @@
 # Skills Catalog
 
-> 88+ skills installed in this Claude Code setup. Custom-built skills are marked with a star.
+> 93+ skills installed in this Claude Code setup. Custom-built skills are marked with a star.
 
 ## Table of Contents
 
@@ -14,6 +14,8 @@
 - [AI and Research](#ai-and-research)
 - [Blockchain Analysis](#blockchain-analysis)
 - [Productivity and Content](#productivity-and-content)
+- [Personal and Reflection](#personal-and-reflection)
+- [Creative AI](#creative-ai)
 - [Framework-Specific](#framework-specific)
 - [Vercel Platform](#vercel-platform)
 
@@ -25,6 +27,7 @@
 |---|---|---|
 | **russian-text-quality** | Detects Russian-language quality bugs in code: broken i18n pluralization, case-agreement in concatenation, terminology drift, transliterated identifiers, language mixing | [GitHub](https://github.com/Anic888/russian-text-quality) |
 | **predeploy-audit** | 9 deterministic security checks for indie Next.js + Supabase + Stripe apps. ~80ms, zero deps | [GitHub](https://github.com/Anic888/predeploy-audit-nextjs) |
+| **image-studio** | AI image generation CLI + skill with curated style profiles: 14 designers, 100+ directors, 99 photographers, cinema parameters | local |
 
 ---
 
@@ -58,6 +61,8 @@
 | **yara-rule-authoring** | Author high-quality YARA-X detection rules for malware identification |
 | **burpsuite-project-parser** | Search and explore Burp Suite project files from the command line |
 | **dimensional-analysis** | Annotate codebases with dimensional analysis comments (units, dimensions, scaling) |
+| **firebase-apk-scanner** | Scan Android APKs for Firebase misconfigurations (open DBs, storage buckets, exposed cloud functions) |
+| **testing-handbook-generator** | Meta-skill that analyzes the Trail of Bits Testing Handbook and generates Claude Code skills for security testing tools |
 
 ---
 
@@ -104,6 +109,7 @@
 | **frontend-design** | Create distinctive, production-grade frontend interfaces |
 | **ui-ux-pro-max** | UI/UX design intelligence: 50+ styles, 161 color palettes, 57 font pairings |
 | **animate** | Enhance features with purposeful animations and micro-interactions |
+| **design-creator** | Generate trend-aware poster SVGs via parallel concept explorers, two-pass critic ranking, automatic layout verification |
 | **web-design-guidelines** | Review UI code for Web Interface Guidelines compliance |
 | **seo-audit** | Audit, review, and diagnose SEO issues |
 | **vercel-react-best-practices** | React and Next.js performance optimization from Vercel Engineering |
@@ -136,6 +142,7 @@
 | **seatbelt-sandboxer** | Generate minimal macOS Seatbelt sandbox configurations |
 | **gh-cli** | Enforce authenticated `gh` CLI workflows over unauthenticated curl |
 | **varlock** | Secure environment variable management |
+| **git-cleanup** | Safely categorize and clean up local git branches/worktrees (merged, squash-merged, superseded, active) |
 
 ---
 
@@ -175,6 +182,31 @@
 | **interpreting-culture-index** | Interpret Culture Index surveys and behavioral profiles |
 | **moltdj** | SoundCloud for AI bots (generate tracks, share on Moltbook) |
 | **find-skills** | Discover and install agent skills |
+
+---
+
+## Personal and Reflection
+
+Non-technical skills for self-understanding and meaning-making. Grounded in evidence-based frameworks, not fortune-telling.
+
+| Skill | Description |
+|---|---|
+| **psychologist** | Evidence-based psychological support for anxiety, relationships, burnout, attachment, boundaries — 12 therapeutic frameworks |
+| **astrologer** | Psychological astrology for self-understanding, natal charts, transits, archetypal life themes — explicitly not predictive |
+| **cosmic-therapist** | Adaptive dual-lens reasoning agent combining evidence-based psychology with archetypal astrology, three-layer architecture |
+
+---
+
+## Creative AI
+
+| Skill | Description |
+|---|---|
+| ★ **image-studio** | AI image gen with curated style profiles: 14 designers, 100+ directors, 99 photographers, cinema params |
+| **design-creator** | Trend-aware poster SVG generator with 3 parallel concept explorers, adversarial critic ranking, auto layout verification |
+| **imagen** | Generate images using Google Gemini's image generation |
+| **elevenlabs** | Convert documents and text to audio (text-to-speech) |
+| **remotion-best-practices** | Video creation in React with Remotion |
+| **moltdj** | SoundCloud for AI bots (generate tracks, share on Moltbook) |
 
 ---
 
