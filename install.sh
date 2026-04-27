@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Claude Code Toolkit — bootstrap installer for macOS / Linux / WSL
-# Installs all 17 plugins and clones public custom skills into ~/.claude/
+# Installs all 29 plugins, 13 contains-studio subagents, and clones public custom skills into ~/.claude/
 
 set -euo pipefail
 
 SKILLS_DIR="${HOME}/.claude/skills"
+AGENTS_DIR="${HOME}/.claude/agents"
 TOOLKIT_DIR="${HOME}/.claude-toolkit-sources"
 
 # Marketplace 1: official Anthropic plugins
@@ -29,6 +30,22 @@ OFFICIAL_PLUGINS=(
   vercel
   wordpress.com
   zapier
+  # Mobile + Native
+  expo
+  # Billing
+  revenuecat
+  # Observability + Analytics
+  sentry
+  posthog
+  # Language servers
+  typescript-lsp
+  pyright-lsp
+  rust-analyzer-lsp
+  swift-lsp
+  # Workflow + Docs + AI/ML
+  commit-commands
+  context7
+  huggingface-skills
 )
 
 # Marketplace 2: Trail of Bits security & devops skills
@@ -76,6 +93,25 @@ CUSTOM_SKILLS=(
   "predeploy-audit|https://github.com/Anic888/predeploy-audit-nextjs.git|skill"
 )
 
+# Subagents from contains-studio/agents (MIT) — specialized roles main agent delegates to
+# Format: category/agent-name
+SUBAGENTS=(
+  "engineering/ai-engineer"
+  "engineering/mobile-app-builder"
+  "engineering/rapid-prototyper"
+  "marketing/app-store-optimizer"
+  "marketing/content-creator"
+  "marketing/growth-hacker"
+  "marketing/instagram-curator"
+  "marketing/reddit-community-builder"
+  "marketing/tiktok-strategist"
+  "marketing/twitter-engager"
+  "product/trend-researcher"
+  "studio-operations/legal-compliance-checker"
+  "design/whimsy-injector"
+)
+SUBAGENTS_BASE="https://raw.githubusercontent.com/contains-studio/agents/main"
+
 color_blue() { printf '\033[1;34m%s\033[0m\n' "$*"; }
 color_green() { printf '\033[1;32m%s\033[0m\n' "$*"; }
 color_yellow() { printf '\033[1;33m%s\033[0m\n' "$*"; }
@@ -120,6 +156,23 @@ install_plugins "${OFFICIAL_MP}" "${OFFICIAL_PLUGINS[@]}"
 
 ensure_marketplace "${TOB_MP}" "${TOB_SRC}"
 install_plugins "${TOB_MP}" "${TOB_PLUGINS[@]}"
+
+color_blue "▶ Installing $((${#SUBAGENTS[@]})) subagents from contains-studio/agents"
+mkdir -p "${AGENTS_DIR}"
+for entry in "${SUBAGENTS[@]}"; do
+  category="${entry%%/*}"
+  name="${entry##*/}"
+  mkdir -p "${AGENTS_DIR}/${category}"
+  target="${AGENTS_DIR}/${category}/${name}.md"
+  printf '  → %s ... ' "${entry}"
+  if [[ -f "${target}" ]]; then
+    color_yellow "exists (skipped — preserve any local customizations)"
+  elif curl -fsSL "${SUBAGENTS_BASE}/${entry}.md" -o "${target}"; then
+    color_green "ok"
+  else
+    color_yellow "skipped (download failed)"
+  fi
+done
 
 color_blue "▶ Cloning custom skills into ${TOOLKIT_DIR}"
 mkdir -p "${TOOLKIT_DIR}" "${SKILLS_DIR}"

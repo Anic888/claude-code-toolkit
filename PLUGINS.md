@@ -1,6 +1,6 @@
 # Plugins and MCP Servers
 
-> Full details on the 17 plugins and 10 MCP servers powering this Claude Code setup.
+> Full details on the 29 plugins and 15+ MCP servers powering this Claude Code setup.
 
 ## Table of Contents
 
@@ -8,12 +8,20 @@
   - [Workflow and Productivity](#workflow-and-productivity)
   - [Design and Frontend](#design-and-frontend)
   - [Platform Integrations](#platform-integrations)
+  - [Mobile and Native](#mobile-and-native)
+  - [Billing and Subscriptions](#billing-and-subscriptions)
+  - [Observability and Analytics](#observability-and-analytics)
+  - [Language Servers (LSP)](#language-servers-lsp)
+  - [Documentation and AI/ML](#documentation-and-aiml)
   - [Security and Quality](#security-and-quality)
   - [Testing](#testing)
 - [MCP Servers](#mcp-servers)
   - [Design Tools](#design-tools)
   - [Cloud Platforms](#cloud-platforms)
   - [AI and ML](#ai-and-ml)
+  - [Observability](#observability)
+  - [Billing](#billing)
+  - [Documentation](#documentation)
   - [Browser Automation](#browser-automation)
   - [Scheduling](#scheduling)
 
@@ -60,6 +68,10 @@ Create Claude Code hooks from conversation analysis or explicit instructions. De
 #### skill-creator
 
 Create new skills, modify existing skills, and measure skill performance.
+
+#### commit-commands
+
+Git commit workflows. Conventional commits, scoped commits, multi-line bodies with proper attribution. Useful when standardizing commit hygiene across a team or solo workflow.
 
 ---
 
@@ -115,6 +127,76 @@ Payment integrations, webhook handling, Stripe API.
 #### zapier
 
 Workflow automation connecting 5000+ apps.
+
+---
+
+### Mobile and Native
+
+#### expo
+
+React Native + Expo development. SDK 55+ workflows, EAS Build (preview / production / development profiles), config plugins, Expo Router, native module integration. Critical for cross-platform mobile builds with EAS-managed signing.
+
+| Capability | What it covers |
+|---|---|
+| EAS Build | Profile configuration, env var push, .easignore tuning |
+| Expo Router | File-based routing, deep linking, modal stacks |
+| Native modules | Plugin entries in app.json, prebuild flow |
+| OTA updates | EAS Update channel management |
+| Doctor | `expo-doctor` pre-build checks |
+
+---
+
+### Billing and Subscriptions
+
+#### revenuecat
+
+Subscription management for iOS/Android in-app purchases. Webhooks → backend sync, entitlement resolution, customer state queries, paywall configuration.
+
+| Capability | What it covers |
+|---|---|
+| Customer state | Active entitlements, subscription tier, expiry |
+| Webhook integration | RC events → backend (Supabase edge function pattern) |
+| Offering management | Packages, monthly/annual pricing, trial introductory offers |
+| Cross-platform | Match Play Store + App Store product IDs to one entitlement |
+
+(stripe and zapier already covered above under Platform Integrations)
+
+---
+
+### Observability and Analytics
+
+#### sentry
+
+Error tracking and performance monitoring. Project queries, issue triage, release tracking, source map integration, performance traces.
+
+#### posthog
+
+Product analytics, feature flags, session replay. Event tracking, funnel analysis, cohort queries, A/B test setup, replay search.
+
+---
+
+### Language Servers (LSP)
+
+LSP plugins provide semantic code understanding (definitions, references, type info, autocomplete) — much more accurate than grep for navigation and refactoring.
+
+| Plugin | Language | Notes |
+|---|---|---|
+| **typescript-lsp** | TypeScript / JavaScript | Strict mode, project references, monorepo support |
+| **pyright-lsp** | Python | uv-aware, strict mode, type stubs |
+| **rust-analyzer-lsp** | Rust | Cargo workspaces, async/await, macro expansion |
+| **swift-lsp** | Swift | SwiftPM, SwiftUI, iOS/macOS targets |
+
+---
+
+### Documentation and AI/ML
+
+#### context7
+
+Live library documentation lookup. Replaces stale LLM training data with current docs from React, Next.js, Prisma, Tailwind, Django, and 1000s more. Use whenever working with a third-party library/SDK/CLI — even well-known ones, as APIs change.
+
+#### huggingface-skills
+
+Hugging Face Hub integration. Model search, Space invocation, paper search (250M+ via OpenAlex), doc fetch. Useful for ML-adjacent prototypes (image-gen, text-classification, embeddings).
 
 ---
 
@@ -224,6 +306,38 @@ Design-to-code bridge with full Plugin API access.
 | Paper search | `paper_search` (250M+ works via OpenAlex) |
 | Spaces | `space_search`, `dynamic_space` (invoke ML tasks) |
 | Docs | `hf_doc_search`, `hf_doc_fetch` |
+
+---
+
+### Observability
+
+#### PostHog
+
+Product analytics queries from inside Claude Code. Event search, funnel analysis, feature flag state, cohort lookups, session replay search.
+
+#### Sentry
+
+Error and performance issue queries. Search by project / release / environment, get stack traces, link to source, triage by impact.
+
+---
+
+### Billing
+
+#### RevenueCat
+
+Subscription state from inside Claude Code. Customer lookups by app user ID, active entitlements, subscription history, refund queries.
+
+#### Stripe
+
+Payment, customer, subscription, invoice management. Search by email/customer ID, refund flow, webhook event lookup.
+
+---
+
+### Documentation
+
+#### Context7
+
+Live documentation fetch for libraries/frameworks. `resolve-library-id` finds the right doc set, `query-docs` fetches current API/config/syntax. Replaces stale LLM training data — critical for Next.js, React, Tailwind, Prisma, etc.
 
 ---
 

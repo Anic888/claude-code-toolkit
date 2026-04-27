@@ -4,8 +4,9 @@
   Claude Code Toolkit — bootstrap installer for Windows (PowerShell).
 
 .DESCRIPTION
-  Installs the 17 official plugins from the claude-plugins-official marketplace
-  and clones the public custom skills into %USERPROFILE%\.claude\skills.
+  Installs the 29 official plugins from the claude-plugins-official marketplace,
+  downloads 13 contains-studio subagents, and clones the public custom skills
+  into %USERPROFILE%\.claude\.
 
 .NOTES
   Requires: claude (Claude Code CLI), git.
@@ -15,6 +16,7 @@
 $ErrorActionPreference = 'Stop'
 
 $SkillsDir   = Join-Path $env:USERPROFILE '.claude\skills'
+$AgentsDir   = Join-Path $env:USERPROFILE '.claude\agents'
 $ToolkitDir  = Join-Path $env:USERPROFILE '.claude-toolkit-sources'
 $HooksDir    = Join-Path $env:USERPROFILE '.claude\hooks'
 
@@ -26,7 +28,17 @@ $OfficialPlugins = @(
   'superpowers', 'frontend-design', 'code-review', 'security-guidance',
   'github', 'gitlab', 'playwright', 'ralph-loop', 'figma',
   'skill-creator', 'hookify', 'supabase', 'stripe', 'wix',
-  'vercel', 'wordpress.com', 'zapier'
+  'vercel', 'wordpress.com', 'zapier',
+  # Mobile + Native
+  'expo',
+  # Billing
+  'revenuecat',
+  # Observability + Analytics
+  'sentry', 'posthog',
+  # Language servers
+  'typescript-lsp', 'pyright-lsp', 'rust-analyzer-lsp', 'swift-lsp',
+  # Workflow + Docs + AI/ML
+  'commit-commands', 'context7', 'huggingface-skills'
 )
 
 # Marketplace 2: Trail of Bits security & devops skills
@@ -52,6 +64,24 @@ $CustomSkills = @(
   @{ Name = 'russian-text-quality'; Url = 'https://github.com/Anic888/russian-text-quality.git'; SubPath = '' },
   @{ Name = 'predeploy-audit';      Url = 'https://github.com/Anic888/predeploy-audit-nextjs.git'; SubPath = 'skill' }
 )
+
+# Subagents from contains-studio/agents (MIT) — specialized roles main agent delegates to
+$Subagents = @(
+  'engineering/ai-engineer',
+  'engineering/mobile-app-builder',
+  'engineering/rapid-prototyper',
+  'marketing/app-store-optimizer',
+  'marketing/content-creator',
+  'marketing/growth-hacker',
+  'marketing/instagram-curator',
+  'marketing/reddit-community-builder',
+  'marketing/tiktok-strategist',
+  'marketing/twitter-engager',
+  'product/trend-researcher',
+  'studio-operations/legal-compliance-checker',
+  'design/whimsy-injector'
+)
+$SubagentsBase = 'https://raw.githubusercontent.com/contains-studio/agents/main'
 
 function Write-Step($msg)  { Write-Host "▶ $msg" -ForegroundColor Cyan }
 function Write-Ok($msg)    { Write-Host "  $msg" -ForegroundColor Green }
@@ -98,6 +128,27 @@ Install-Plugins   $OfficialMp $OfficialPlugins
 
 Ensure-Marketplace $TobMp $TobSrc
 Install-Plugins   $TobMp $TobPlugins
+
+Write-Step "Installing $($Subagents.Count) subagents from contains-studio/agents"
+New-Item -ItemType Directory -Path $AgentsDir -Force | Out-Null
+foreach ($entry in $Subagents) {
+  $category = $entry.Split('/')[0]
+  $name     = $entry.Split('/')[1]
+  $catDir   = Join-Path $AgentsDir $category
+  $target   = Join-Path $catDir "$name.md"
+  New-Item -ItemType Directory -Path $catDir -Force | Out-Null
+  Write-Host "  → $entry ... " -NoNewline
+  if (Test-Path $target) {
+    Write-Warn2 'exists (skipped — preserve any local customizations)'
+    continue
+  }
+  try {
+    Invoke-WebRequest -Uri "$SubagentsBase/$entry.md" -OutFile $target -UseBasicParsing -ErrorAction Stop
+    Write-Ok 'ok'
+  } catch {
+    Write-Warn2 'skipped (download failed)'
+  }
+}
 
 Write-Step "Cloning custom skills into $ToolkitDir"
 New-Item -ItemType Directory -Path $ToolkitDir -Force | Out-Null

@@ -8,9 +8,10 @@
   <strong>Production-tested skills, plugins, hooks, and MCP integrations for Claude Code — Anthropic's agentic coding CLI.</strong>
 </p>
 
-[![Skills](https://img.shields.io/badge/skills-93+-8B5CF6)](./SKILLS.md)
-[![Plugins](https://img.shields.io/badge/plugins-17-06B6D4)](./PLUGINS.md)
-[![MCP Servers](https://img.shields.io/badge/MCP_servers-10-F59E0B)](./PLUGINS.md#mcp-servers)
+[![Skills](https://img.shields.io/badge/skills-100+-8B5CF6)](./SKILLS.md)
+[![Plugins](https://img.shields.io/badge/plugins-29-06B6D4)](./PLUGINS.md)
+[![Subagents](https://img.shields.io/badge/subagents-19-EC4899)](./SUBAGENTS.md)
+[![MCP Servers](https://img.shields.io/badge/MCP_servers-15+-F59E0B)](./PLUGINS.md#mcp-servers)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 ---
@@ -112,7 +113,7 @@ Full catalog with descriptions: **[SKILLS.md](./SKILLS.md)**
 
 ---
 
-## Installed Plugins (17)
+## Installed Plugins (29)
 
 Full details: **[PLUGINS.md](./PLUGINS.md)**
 
@@ -135,10 +136,39 @@ Full details: **[PLUGINS.md](./PLUGINS.md)**
 | **ralph-loop** | Recurring task loops |
 | **stripe** | Payment integrations |
 | **zapier** | Workflow automation |
+| **expo** | React Native + Expo mobile dev (SDK 55, EAS builds) |
+| **revenuecat** | Subscription billing (iOS/Android IAP, webhooks) |
+| **sentry** | Error tracking, performance monitoring |
+| **posthog** | Product analytics, feature flags, session replay |
+| **typescript-lsp** | TypeScript language server (strict mode, project refs) |
+| **pyright-lsp** | Python type checker (uv-aware, strict mode) |
+| **rust-analyzer-lsp** | Rust language server (cargo workspaces, async) |
+| **swift-lsp** | Swift language server (SwiftPM, SwiftUI) |
+| **commit-commands** | Git commit workflows (conventional commits, scoped) |
+| **context7** | Live library docs lookup (replaces stale training data) |
+| **huggingface-skills** | HF Hub, Spaces, papers, model search |
 
 ---
 
-## MCP Servers (10)
+## Subagents (19)
+
+Full details: **[SUBAGENTS.md](./SUBAGENTS.md)**. Subagents are specialized roles in `~/.claude/agents/` that the main agent delegates to. Lighter than skills, heavier than prompts.
+
+| Category | Count | Highlights |
+|---|---|---|
+| Engineering | 3 | ai-engineer, mobile-app-builder ★, rapid-prototyper |
+| Marketing | 7 | app-store-optimizer, growth-hacker, tiktok-strategist, instagram-curator, twitter-engager, reddit-community-builder, content-creator |
+| Design | 7 | whimsy-injector ★, color-research, concept-explorer, design-critic, layout-verifier, periodic-research, research-agent |
+| Product | 1 | trend-researcher |
+| Studio Operations | 1 | legal-compliance-checker |
+
+Most subagents come from [contains-studio/agents](https://github.com/contains-studio/agents) (MIT). The 6 design-creator agents (color-research, concept-explorer, design-critic, layout-verifier, periodic-research, research-agent) are part of the local `design-creator` skill orchestration.
+
+★ marks agents customized for this user's stack (Astralyn / Avara / Amoris on Expo+Supabase+RC).
+
+---
+
+## MCP Servers (15+)
 
 | Server | Purpose |
 |---|---|
@@ -152,6 +182,11 @@ Full details: **[PLUGINS.md](./PLUGINS.md)**
 | **Claude in Chrome** | Browser automation, DOM interaction |
 | **Claude Preview** | Dev server preview and verification |
 | **Scheduled Tasks** | Cron-based automated agents |
+| **Context7** | Live library docs (replaces stale training data) |
+| **PostHog** | Product analytics, feature flags, session replay queries |
+| **RevenueCat** | Subscription state, customer lookups, entitlements |
+| **Sentry** | Error tracking, performance issues, release tracking |
+| **Stripe** | Payments, subscriptions, customer management |
 
 ---
 
@@ -204,7 +239,7 @@ cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
 
 ### One-shot install (recommended)
 
-The bootstrap installer registers two marketplaces (Anthropic official + Trail of Bits security skills), installs 17 official plugins + 33 Trail of Bits plugins, clones the public custom skills, and copies the deploy hook.
+The bootstrap installer registers two marketplaces (Anthropic official + Trail of Bits security skills), installs 29 official plugins + 33 Trail of Bits plugins, clones the public custom skills, downloads the contains-studio subagents, and copies the deploy hook.
 
 ```bash
 # macOS / Linux / WSL
@@ -258,8 +293,9 @@ chmod +x ~/.claude/hooks/predeploy-audit-gate.sh
 ```
 claude-code-toolkit/
 ├── README.md              # This file
-├── SKILLS.md              # Full skills catalog (93+)
-├── PLUGINS.md             # Plugins & MCP servers detail
+├── SKILLS.md              # Full skills catalog (100+)
+├── PLUGINS.md             # 29 plugins & 15+ MCP servers detail
+├── SUBAGENTS.md           # 19 subagents catalog (engineering, marketing, design, product, ops)
 ├── install.sh             # Bootstrap installer for macOS / Linux / WSL
 ├── install.ps1            # Bootstrap installer for Windows PowerShell
 ├── hooks/

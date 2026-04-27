@@ -1,6 +1,6 @@
 # Skills Catalog
 
-> 93+ skills installed in this Claude Code setup. Custom-built skills are marked with a star.
+> 100+ skills installed in this Claude Code setup. Custom-built skills are marked with a star. New plugin-bundled skills come from `expo`, `revenuecat`, `sentry`, `posthog`, `context7`, `huggingface-skills`, and the 4 LSPs (`typescript-lsp`, `pyright-lsp`, `rust-analyzer-lsp`, `swift-lsp`).
 
 ## Table of Contents
 
