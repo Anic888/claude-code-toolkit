@@ -1,6 +1,6 @@
 # Skills Catalog
 
-> 100+ skills installed in this Claude Code setup. Custom-built skills are marked with a star. New plugin-bundled skills come from `expo`, `revenuecat`, `sentry`, `posthog`, `context7`, `huggingface-skills`, and the 4 LSPs (`typescript-lsp`, `pyright-lsp`, `rust-analyzer-lsp`, `swift-lsp`).
+> 180+ skills installed in this Claude Code setup. Custom-built skills are marked with a star. New plugin-bundled skill bundles (Apr 2026): Expo (13), RevenueCat (4), Sentry (30), PostHog (23), Hugging Face (13), Stripe (3), Zapier (3) + slash commands from commit-commands, Sentry, PostHog, and Stripe.
 
 ## Table of Contents
 
@@ -18,6 +18,16 @@
 - [Creative AI](#creative-ai)
 - [Framework-Specific](#framework-specific)
 - [Vercel Platform](#vercel-platform)
+- [Mobile (Expo)](#mobile-expo)
+- [Subscriptions (RevenueCat)](#subscriptions-revenuecat)
+- [Error Tracking (Sentry)](#error-tracking-sentry)
+- [Product Analytics (PostHog)](#product-analytics-posthog)
+- [AI/ML Hub (Hugging Face)](#aiml-hub-hugging-face)
+- [Payments (Stripe)](#payments-stripe)
+- [Workflow Automation (Zapier)](#workflow-automation-zapier)
+- [Slash Commands](#slash-commands)
+- [Language Servers (LSP)](#language-servers-lsp)
+- [Documentation Lookup](#documentation-lookup)
 
 ---
 
@@ -248,3 +258,223 @@ These come bundled with the Vercel plugin but are listed here for completeness:
 | **next-cache-components** | PPR, `use cache`, cacheLife, cacheTag |
 | **runtime-cache** | Per-region key-value cache with tag invalidation |
 | **verification** | Full-story end-to-end verification |
+
+---
+
+## Mobile (Expo)
+
+Bundled with the `expo` plugin. React Native + Expo SDK 55+ workflows.
+
+| Skill | Description |
+|---|---|
+| **building-native-ui** | Complete guide for building apps with Expo Router. Fundamentals, styling, components, navigation, animations, native tabs |
+| **eas-update-insights** | Health of published EAS Updates: crash rates, install/launch counts, unique users, payload size, embedded vs OTA split per channel |
+| **expo-api-routes** | Create API routes in Expo Router with EAS Hosting |
+| **expo-cicd-workflows** | Write EAS workflow YAML files for CI/CD in Expo / EAS context |
+| **expo-deployment** | Deploy Expo apps to iOS App Store, Android Play Store, web hosting, API routes |
+| **expo-dev-client** | Build and distribute Expo development clients locally or via TestFlight |
+| **expo-module** | Write Expo native modules and views via Expo Modules API (Swift, Kotlin, TypeScript). DSL, native views, shared objects, config plugins, lifecycle hooks, autolinking |
+| **expo-tailwind-setup** | Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind v5 |
+| **expo-ui-jetpack-compose** | Use Jetpack Compose Views and modifiers via `@expo/ui/jetpack-compose` |
+| **expo-ui-swift-ui** | Use SwiftUI Views and modifiers via `@expo/ui/swift-ui` |
+| **native-data-fetching** | Network requests, fetch API, React Query, SWR, error handling, caching, offline support, Expo Router data loaders |
+| **upgrading-expo** | Upgrade Expo SDK versions and fix dependency issues |
+| **use-dom** | Run web code in webview on native and as-is on web. Migrate web → native incrementally |
+
+---
+
+## Subscriptions (RevenueCat)
+
+Bundled with the `revenuecat` plugin.
+
+| Skill | Description |
+|---|---|
+| **apikey** | Retrieve public API keys for SDK initialization (iOS, Android, web) |
+| **create-app** | Step-by-step setup of an iOS or Android app in RevenueCat |
+| **create-product** | Guided product creation: subscriptions, consumables, one-time purchases |
+| **status** | Project overview: apps, products, entitlements, offerings, webhooks |
+
+---
+
+## Error Tracking (Sentry)
+
+Bundled with the `sentry` plugin. 30 skills covering every major SDK + meta tools.
+
+### Setup and meta
+
+| Skill | Description |
+|---|---|
+| **sentry-sdk-setup** | Auto-detect platform and load the right SDK skill |
+| **sentry-sdk-skill-creator** | Create a complete Sentry SDK skill bundle for a new platform |
+| **sentry-sdk-upgrade** | Upgrade Sentry JavaScript SDK across major versions, fix deprecated APIs |
+| **sentry-feature-setup** | Configure features beyond basic SDK setup: AI/LLM monitoring, OpenTelemetry pipelines, alerts |
+| **sentry-setup-ai-monitoring** | AI Agent Monitoring (OpenAI, Anthropic, Vercel AI, LangChain, Google GenAI, Pydantic AI) |
+| **sentry-create-alert** | Create alerts via workflow engine API (email, Slack, PagerDuty, Discord) |
+| **sentry-otel-exporter-setup** | OpenTelemetry Collector with Sentry Exporter for multi-project routing |
+
+### SDK setup per platform
+
+| Skill | Platform |
+|---|---|
+| **sentry-android-sdk** | Android (Kotlin/Java) — error monitoring, tracing, profiling, session replay, logging |
+| **sentry-browser-sdk** | Vanilla JS, jQuery, static sites, WordPress |
+| **sentry-cloudflare-sdk** | Workers, Pages, Durable Objects, Queues, Workflows, Hono on Cloudflare |
+| **sentry-cocoa-sdk** | iOS, macOS, tvOS, watchOS, visionOS (SwiftUI + UIKit) |
+| **sentry-dotnet-sdk** | ASP.NET Core, MAUI, WPF, WinForms, Blazor, Azure Functions |
+| **sentry-elixir-sdk** | Phoenix, Plug, LiveView, Oban, Quantum |
+| **sentry-flutter-sdk** | Flutter / Dart on Android, iOS, macOS, Linux, Windows, Web |
+| **sentry-go-sdk** | net/http, Gin, Echo, Fiber, FastHTTP, Iris, Negroni, gRPC |
+| **sentry-nestjs-sdk** | Express + Fastify adapters, GraphQL, microservices, WebSockets, jobs |
+| **sentry-nextjs-sdk** | Next.js 13+ App Router and Pages Router |
+| **sentry-node-sdk** | Node.js, Bun, Deno servers |
+| **sentry-php-sdk** | Plain PHP, Laravel, Symfony |
+| **sentry-python-sdk** | Django, Flask, FastAPI, Celery, Starlette, AIOHTTP, Tornado |
+| **sentry-react-native-sdk** | Expo managed, Expo bare, vanilla React Native |
+| **sentry-react-router-framework-sdk** | React Router v7 framework mode |
+| **sentry-react-sdk** | React 16+, Router v5-v7 non-framework, TanStack Router, Redux, Vite, webpack |
+| **sentry-ruby-sdk** | Rails, Sinatra, Rack, Sidekiq, Resque (also migration from AppSignal/Honeybadger/Bugsnag/Rollbar/Airbrake) |
+| **sentry-svelte-sdk** | Svelte and SvelteKit |
+| **sentry-tanstack-start-sdk** | TanStack Start React |
+
+### Triage and PR review
+
+| Skill | Description |
+|---|---|
+| **sentry-fix-issues** | Find and fix Sentry issues via MCP — analyze stack traces, breadcrumbs, traces, context to identify root causes |
+| **sentry-workflow** | Fix production issues and review code with Sentry context |
+| **sentry-code-review** | Analyze and resolve Sentry comments on GitHub PRs |
+| **sentry-pr-code-review** | Review PRs for issues detected by Seer Bug Prediction |
+
+---
+
+## Product Analytics (PostHog)
+
+Bundled with the `posthog` plugin. Instrumentation, experiments, queries, LLM analytics.
+
+### Instrumentation
+
+| Skill | Description |
+|---|---|
+| **instrument-product-analytics** | Instrument product analytics events |
+| **instrument-feature-flags** | Instrument feature flags |
+| **instrument-error-tracking** | Instrument error tracking |
+| **instrument-llm-analytics** | Instrument LLM analytics |
+| **instrument-logs** | Instrument logs |
+| **instrument-integration** | General PostHog SDK integration |
+
+### Experiments and feature flags
+
+| Skill | Description |
+|---|---|
+| **creating-experiments** | 3-step experiment creation: hypothesis, rollout, analytics |
+| **finding-experiments** | Resolve experiment references from natural language to IDs |
+| **configuring-experiment-rollout** | Variant splits, rollout percentage, mid-experiment changes |
+| **configuring-experiment-analytics** | Exposure criteria, metric types, interpreting results |
+| **managing-experiment-lifecycle** | Launch, pause, resume, end, ship, archive, reset, duplicate |
+| **analyzing-experiment-session-replays** | Session replay patterns across experiment variants |
+| **auditing-experiments-flags** | Audit experiments + flags for config issues, staleness, best-practice violations |
+| **cleaning-up-stale-feature-flags** | Find unused/abandoned flags, dependency check, safe removal |
+
+### LLM analytics
+
+| Skill | Description |
+|---|---|
+| **exploring-llm-clusters** | Investigate LLM analytics clusters: usage patterns, cost/latency, drill into traces |
+| **exploring-llm-evaluations** | Explore LLM evaluation results |
+| **exploring-llm-traces** | Explore LLM trace data |
+
+### Recordings, autocapture, queries
+
+| Skill | Description |
+|---|---|
+| **diagnosing-missing-recordings** | Diagnose missing session recordings |
+| **exploring-autocapture-events** | Explore autocaptured events |
+| **query-examples** | HogQL query reference: trends, funnels, retention, lifecycle, paths, web analytics, error tracking, logs, sessions, LLM traces |
+| **signals** | Query `document_embeddings` table for signals data via HogQL (semantic search over signals) |
+| **managing-subscriptions** | Manage scheduled email/Slack/webhook deliveries of insight or dashboard snapshots |
+| **skills-store** | Skills store browsing |
+
+---
+
+## AI/ML Hub (Hugging Face)
+
+Bundled with the `huggingface-skills` plugin.
+
+| Skill | Description |
+|---|---|
+| **hf-cli** | Hugging Face Hub CLI (`hf`): auth, cache, buckets, jobs, repos, discussions, PRs, models, datasets, spaces, papers, collections, dataset queries, webhooks, inference endpoints |
+| **huggingface-best** | Best practices for Hugging Face workflows |
+| **huggingface-community-evals** | Run evaluations using inspect-ai and lighteval on local hardware (vLLM / Transformers / accelerate) |
+| **huggingface-datasets** | Dataset Viewer API: subset/split metadata, paginate rows, search text, filters, parquet URLs, statistics |
+| **huggingface-gradio** | Build Gradio web UIs and demos in Python — components, event listeners, layouts, chatbots |
+| **huggingface-llm-trainer** | Train/fine-tune LLMs using TRL or Unsloth with HF Jobs (SFT, DPO, GRPO, reward modeling, GGUF conversion) |
+| **huggingface-local-models** | Run models locally with llama.cpp + GGUF on CPU, Mac Metal, CUDA, ROCm |
+| **huggingface-paper-publisher** | Publish/manage research papers on HF Hub: paper pages, links to models/datasets, claim authorship, markdown articles |
+| **huggingface-papers** | Look up HF paper pages in markdown, papers API for authors/links/repos. Accepts HF URL, arXiv URL/ID |
+| **huggingface-tool-builder** | Build reusable scripts to fetch/enrich/process data via HF API |
+| **huggingface-trackio** | Track and visualize ML training: metrics logging (Python API), alerts (CLI), dashboard, HF Space sync |
+| **huggingface-vision-trainer** | Train vision models (D-FINE, RT-DETR, DETR, YOLOS, ViT, DINOv3, MobileNet, ResNet, SAM/SAM2) on HF Jobs |
+| **transformers-js** | Run ML models in JS/TS — NLP, vision, audio, multimodal, in browsers + Node/Bun/Deno via WebGPU/WASM |
+
+---
+
+## Payments (Stripe)
+
+Bundled with the `stripe` plugin.
+
+| Skill | Description |
+|---|---|
+| **stripe-best-practices** | Stripe best practices |
+| **stripe-projects** | Stripe project setup guidance |
+| **upgrade-stripe** | Upgrade Stripe API versions and SDKs |
+
+---
+
+## Workflow Automation (Zapier)
+
+Bundled with the `zapier` plugin.
+
+| Skill | Description |
+|---|---|
+| **zapier-setup** | Set up Zapier MCP, add tools — diagnostic + branched flow (summary / reconnect / onboarding / config help) |
+| **zapier-status** | Check MCP setup health: dashboard view, audit waste/duplicates, diagnose troubleshooting |
+| **create-my-tools-profile** | Generate personalized AI skill from configured Zapier MCP tools |
+
+---
+
+## Slash Commands
+
+Plugin-provided slash commands invokable as `/<command>`.
+
+| Command | Plugin | Description |
+|---|---|---|
+| `/commit` | commit-commands | Create a git commit |
+| `/commit-push-pr` | commit-commands | Commit, push, and open a PR |
+| `/clean_gone` | commit-commands | Remove local branches marked `[gone]` (deleted on remote) + their worktrees |
+| `/seer` | sentry | Natural-language questions about your Sentry environment via Sentry MCP |
+| `/llma-cc-setup` | posthog | Set up PostHog LLM Analytics to capture Claude Code sessions |
+| `/llma-cc-status` | posthog | Check if Claude Code sessions are being sent to PostHog LLM Analytics |
+| `/llma-cc-ingest` | posthog | Manually send a Claude Code session log to PostHog LLM Analytics |
+| `/explain-error` | stripe | Explain Stripe error codes with code-example solutions |
+| `/test-cards` | stripe | Display Stripe test card numbers for various scenarios |
+
+---
+
+## Language Servers (LSP)
+
+Plugins below register an LSP server. They don't add named skills — they boost Claude Code's semantic code understanding for the language: definitions, references, type info, autocomplete, refactor accuracy.
+
+| Plugin | Language | Notes |
+|---|---|---|
+| **typescript-lsp** | TypeScript / JavaScript | Strict mode, project references, monorepo support |
+| **pyright-lsp** | Python | uv-aware, strict mode, type stubs |
+| **rust-analyzer-lsp** | Rust | Cargo workspaces, async/await, macro expansion |
+| **swift-lsp** | Swift | SwiftPM, SwiftUI, iOS/macOS targets |
+
+---
+
+## Documentation Lookup
+
+| Plugin | What it does |
+|---|---|
+| **context7** | Live library documentation fetch via MCP. Replaces stale LLM training data with current docs from React, Next.js, Prisma, Tailwind, Django, and 1000s more. Two MCP tools: `resolve-library-id` (find the right doc set), `query-docs` (fetch current API/config/syntax) |

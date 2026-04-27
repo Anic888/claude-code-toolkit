@@ -8,7 +8,7 @@
   <strong>Production-tested skills, plugins, hooks, and MCP integrations for Claude Code — Anthropic's agentic coding CLI.</strong>
 </p>
 
-[![Skills](https://img.shields.io/badge/skills-100+-8B5CF6)](./SKILLS.md)
+[![Skills](https://img.shields.io/badge/skills-180+-8B5CF6)](./SKILLS.md)
 [![Plugins](https://img.shields.io/badge/plugins-29-06B6D4)](./PLUGINS.md)
 [![Subagents](https://img.shields.io/badge/subagents-19-EC4899)](./SUBAGENTS.md)
 [![MCP Servers](https://img.shields.io/badge/MCP_servers-15+-F59E0B)](./PLUGINS.md#mcp-servers)
