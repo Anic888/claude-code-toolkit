@@ -152,8 +152,11 @@ def lines_that_fit(pool, y_top, y_bottom):
 
 def svg_header():
     return (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}pt" height="{H}pt" '
+        '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n'
+        f'<svg xmlns="http://www.w3.org/2000/svg" '
+        f'xmlns:xlink="http://www.w3.org/1999/xlink" '
+        f'version="1.1" '
+        f'width="{W}" height="{H}" '
         f'viewBox="0 0 {W} {H}">\n'
     )
 
@@ -168,32 +171,31 @@ def defs():
       <stop offset="0%" stop-color="#1E3A8A"/>
       <stop offset="100%" stop-color="#87CEEB"/>
     </linearGradient>
-    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%" fx="45%" fy="45%">
+    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#FFEB3B"/>
       <stop offset="100%" stop-color="#FF6F00"/>
     </radialGradient>
-    <clipPath id="mastheadClip">
-      <rect x="0" y="0" width="{W}" height="{MAST}"/>
-    </clipPath>
   </defs>
-""".replace("{W}", str(W)).replace("{MAST}", str(MAST_H))
+"""
 
 
 def masthead():
     return f"""  <!-- Masthead (sky + sun + water + horizon + title + subtitle) -->
-  <g clip-path="url(#mastheadClip)">
-    <rect x="0" y="0" width="{W}" height="{SKY_H}" fill="url(#skyGradient)"/>
-    <circle cx="{SUN_CX}" cy="{SUN_CY}" r="{SUN_R}" fill="url(#sunGradient)"/>
-    <rect x="0" y="{SKY_H}" width="{W}" height="{WATER_H}" fill="url(#waterGradient)"/>
-    <line x1="0" y1="{HORIZON_Y}" x2="{W}" y2="{HORIZON_Y}" stroke="white" stroke-width="0.5"/>
-    <text x="{W/2}" y="102" text-anchor="middle"
-          font-family="Impact" font-size="56" font-weight="900"
-          fill="white" stroke="black" stroke-width="4.5"
-          paint-order="stroke">THE ISLAND NEWS</text>
-    <text x="{W/2}" y="146" text-anchor="middle"
-          font-family="Arial Black" font-size="22" font-weight="900"
-          font-style="italic" fill="#FFEB3B">All the news that prints to fit</text>
-  </g>
+  <rect x="0" y="0" width="{W}" height="{SKY_H}" fill="url(#skyGradient)"/>
+  <circle cx="{SUN_CX}" cy="{SUN_CY}" r="{SUN_R}" fill="url(#sunGradient)"/>
+  <rect x="0" y="{SKY_H}" width="{W}" height="{WATER_H}" fill="url(#waterGradient)"/>
+  <line x1="0" y1="{HORIZON_Y}" x2="{W}" y2="{HORIZON_Y}" stroke="white" stroke-width="0.5"/>
+  <!-- Title: stroked text below, filled text on top (no paint-order) -->
+  <text x="{W/2}" y="102" text-anchor="middle"
+        font-family="Impact" font-size="56" font-weight="bold"
+        fill="none" stroke="black" stroke-width="6"
+        stroke-linejoin="round">THE ISLAND NEWS</text>
+  <text x="{W/2}" y="102" text-anchor="middle"
+        font-family="Impact" font-size="56" font-weight="bold"
+        fill="white">THE ISLAND NEWS</text>
+  <text x="{W/2}" y="146" text-anchor="middle"
+        font-family="Arial Black" font-size="22" font-weight="bold"
+        font-style="italic" fill="#FFEB3B">All the news that prints to fit</text>
 """
 
 
