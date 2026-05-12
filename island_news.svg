@@ -25,137 +25,98 @@
     <circle cx="95" cy="70" r="62" fill="url(#sunGradient)"/>
     <rect x="0" y="120" width="612" height="35" fill="url(#waterGradient)"/>
     <line x1="0" y1="120" x2="612" y2="120" stroke="white" stroke-width="0.5"/>
-    <g transform="translate(306.0 100) scale(0.96 1.10)">
-      <text x="0" y="0" text-anchor="middle"
-            font-family="Impact, 'Arial Black', 'Liberation Sans', 'DejaVu Sans', sans-serif"
-            font-size="58" font-weight="900" letter-spacing="1"
-            fill="white" stroke="black" stroke-width="5"
-            paint-order="stroke"
-            style="paint-order:stroke;">THE ISLAND NEWS</text>
-    </g>
+    <text x="306.0" y="102" text-anchor="middle"
+          font-family="Impact" font-size="56" font-weight="900"
+          fill="white" stroke="black" stroke-width="4.5"
+          paint-order="stroke">THE ISLAND NEWS</text>
     <text x="306.0" y="146" text-anchor="middle"
-          font-family="'Arial Black', Impact, 'Liberation Sans', 'DejaVu Sans', sans-serif"
-          font-size="22" font-weight="900" font-style="italic"
-          fill="#FFEB3B">All the news that prints to fit</text>
+          font-family="Arial Black" font-size="22" font-weight="900"
+          font-style="italic" fill="#FFEB3B">All the news that prints to fit</text>
   </g>
 
   <!-- Byline -->
-  <text x="36" y="178" font-family="Georgia, 'Times New Roman', serif"
+  <text x="36" y="178" font-family="Georgia"
         font-size="11" fill="#000">Today 27th 2026</text>
   <text x="576" y="178" text-anchor="end"
-        font-family="Georgia, 'Times New Roman', serif"
+        font-family="Georgia"
         font-size="11" fill="#000">Bob Smith</text>
   <!-- Thick line under masthead -->
   <line x1="36" y1="188" x2="576" y2="188"
         stroke="black" stroke-width="2"/>
 
   <!-- Column headers -->
-  <text x="121.0" y="210" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="#000">Island Finance</text>
-  <text x="306.0" y="210" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="#000">Island Elections</text>
-  <text x="491.0" y="210" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="bold" fill="#000">Election Demographics</text>
+  <text x="121.0" y="210" text-anchor="middle" font-family="Georgia" font-size="12" font-weight="bold" fill="#000">Island Finance</text>
+  <text x="306.0" y="210" text-anchor="middle" font-family="Georgia" font-size="12" font-weight="bold" fill="#000">Island Elections</text>
+  <text x="491.0" y="210" text-anchor="middle" font-family="Georgia" font-size="12" font-weight="bold" fill="#000">Election Demographics</text>
   <!-- Vertical column dividers -->
   <line x1="213.5" y1="196" x2="213.5" y2="774" stroke="#000" stroke-width="0.5"/>
   <line x1="398.5" y1="196" x2="398.5" y2="774" stroke="#000" stroke-width="0.5"/>
 
-<text x="36" y="226.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="36" dy="0" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-</text>
-<text x="36" y="454.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="36" dy="0" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="36" dy="13"> </tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="36" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="36" dy="13">ties and all of that sort of thing.</tspan>
-</text>
-<text x="221" y="226.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="221" dy="0" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-</text>
-<text x="221" y="668.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="221" dy="0"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="221" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="221" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="221" dy="13"> </tspan>
-</text>
-<text x="406" y="226.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="406" dy="0" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-</text>
-<text x="406" y="668.00" font-family="Georgia, 'Times New Roman', serif" font-size="10.5" fill="#000">
-<tspan x="406" dy="0"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">Now is the time for all good men</tspan>
-<tspan x="406" dy="13" textLength="170" lengthAdjust="spacing">to vocme to he aid of their par-</tspan>
-<tspan x="406" dy="13">ties and all of that sort of thing.</tspan>
-<tspan x="406" dy="13"> </tspan>
-</text>
+<text x="36" y="226.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="239.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="252.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="278.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="454.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="467.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="493.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="506.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="519.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="545.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="558.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="571.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="597.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="610.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="623.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="649.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="662.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="675.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="701.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="714.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="36" y="727.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="36" y="753.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="36" y="766.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="226.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="239.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="252.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="278.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="291.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="304.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="330.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="343.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="356.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="382.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="395.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="408.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="434.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="447.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="460.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="681.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="694.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="707.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="221" y="733.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="221" y="746.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="221" y="759.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="226.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="239.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="252.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="278.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="291.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="304.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="330.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="343.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="356.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="382.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="395.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="408.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="434.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="447.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="460.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="681.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="694.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="707.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
+<text x="406" y="733.00" font-family="Georgia" font-size="10.5" fill="#000">Now is the time for all good men</text>
+<text x="406" y="746.00" font-family="Georgia" font-size="10.5" fill="#000">to vocme to he aid of their par-</text>
+<text x="406" y="759.00" font-family="Georgia" font-size="10.5" fill="#000">ties and all of that sort of thing.</text>
   <!-- Palm trees image placeholder (column 1) -->
   <rect x="36" y="296" width="170" height="140" fill="#E8F4F8" stroke="black" stroke-width="5"/>
   <rect x="38.5" y="387.0" width="165" height="46.5" fill="#F4E4BC"/>
@@ -204,13 +165,13 @@
   <line x1="175" y1="363.2" x2="162.9" y2="370.2" stroke="#2E7D32" stroke-width="1.8"/>
   <line x1="175" y1="363.2" x2="161.0" y2="363.2" stroke="#2E7D32" stroke-width="1.8"/>
   <line x1="175" y1="363.2" x2="162.9" y2="356.2" stroke="#2E7D32" stroke-width="1.8"/>
-  <text x="121.0" y="431" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" fill="#444">[ palm trees on beach ]</text>
+  <text x="121.0" y="431" text-anchor="middle" font-family="Georgia" font-size="6.5" fill="#444">[ palm trees on beach ]</text>
   <!-- Island map image placeholder (spans cols 2-3) -->
   <rect x="215" y="470" width="355" height="180" fill="#FDFBF3" stroke="black" stroke-width="5"/>
   <path d="M 262.5 530.0 C 247.5 500.0, 302.5 485.0, 352.5 495.0 S 452.5 480.0, 502.5 510.0 S 537.5 570.0, 512.5 605.0 S 422.5 630.0, 362.5 615.0 S 272.5 615.0, 262.5 530.0 Z" fill="#A8D5A2" stroke="#2C5F2D" stroke-width="1.5"/>
   <path d="M 332.5 560.0 L 352.5 535.0 L 372.5 560.0 Z" fill="#7BA77B"/>
   <path d="M 372.5 565.0 L 397.5 540.0 L 422.5 565.0 Z" fill="#7BA77B"/>
-  <text x="392.5" y="590.0" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" letter-spacing="3" fill="#2C5F2D">I S L A N D</text>
-  <text x="392.5" y="642" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#666">[ map of the island ]</text>
+  <text x="392.5" y="590.0" text-anchor="middle" font-family="Georgia" font-size="14" font-weight="bold" letter-spacing="3" fill="#2C5F2D">I S L A N D</text>
+  <text x="392.5" y="642" text-anchor="middle" font-family="Georgia" font-size="7" fill="#666">[ map of the island ]</text>
 
 </svg>

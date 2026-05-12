@@ -62,47 +62,24 @@ def build_paragraphs(count):
 
 
 def text_block(x, y_top, y_bottom, lines):
-    """Render text lines as a <text> element starting at (x, y_top).
+    """Render text lines as individual <text> elements (Illustrator-friendly).
 
-    Lines fit while y <= y_bottom. textLength forces justification.
+    Lines fit while y <= y_bottom.
     Returns SVG fragment + how many lines were consumed.
     """
     parts = []
     used = 0
     y = y_top
-    parts.append(
-        f'<text x="{x}" y="{y:.2f}" font-family="Georgia, \'Times New Roman\', serif" '
-        f'font-size="{FONT_SIZE}" fill="#000">'
-    )
-    first = True
     for line in lines:
         if y > y_bottom:
             break
-        if line == "":
-            # Blank line - just move dy
-            dy = LINE_H if not first else 0
-            parts.append(f'<tspan x="{x}" dy="{dy}"> </tspan>')
-            y += LINE_H if not first else 0
-            first = False
-            used += 1
-            continue
-        dy = 0 if first else LINE_H
-        # textLength on most lines (justify); skip on lines ending with a period (last of paragraph)
-        # Actually for visual consistency, apply textLength only when the line is "full"
-        # Last line of paragraph (ends with .) -> no textLength (left aligned-ish)
-        if line.endswith("thing.") or line.endswith("."):
+        if line != "":
             parts.append(
-                f'<tspan x="{x}" dy="{dy}">{escape(line)}</tspan>'
+                f'<text x="{x}" y="{y:.2f}" font-family="Georgia" '
+                f'font-size="{FONT_SIZE}" fill="#000">{escape(line)}</text>'
             )
-        else:
-            parts.append(
-                f'<tspan x="{x}" dy="{dy}" textLength="{COL_W}" '
-                f'lengthAdjust="spacing">{escape(line)}</tspan>'
-            )
-        y += LINE_H if not first else 0
-        first = False
+        y += LINE_H
         used += 1
-    parts.append("</text>")
     return "\n".join(parts), used
 
 
@@ -209,28 +186,23 @@ def masthead():
     <circle cx="{SUN_CX}" cy="{SUN_CY}" r="{SUN_R}" fill="url(#sunGradient)"/>
     <rect x="0" y="{SKY_H}" width="{W}" height="{WATER_H}" fill="url(#waterGradient)"/>
     <line x1="0" y1="{HORIZON_Y}" x2="{W}" y2="{HORIZON_Y}" stroke="white" stroke-width="0.5"/>
-    <g transform="translate({W/2} 100) scale(0.96 1.10)">
-      <text x="0" y="0" text-anchor="middle"
-            font-family="Impact, 'Arial Black', 'Liberation Sans', 'DejaVu Sans', sans-serif"
-            font-size="58" font-weight="900" letter-spacing="1"
-            fill="white" stroke="black" stroke-width="5"
-            paint-order="stroke"
-            style="paint-order:stroke;">THE ISLAND NEWS</text>
-    </g>
+    <text x="{W/2}" y="102" text-anchor="middle"
+          font-family="Impact" font-size="56" font-weight="900"
+          fill="white" stroke="black" stroke-width="4.5"
+          paint-order="stroke">THE ISLAND NEWS</text>
     <text x="{W/2}" y="146" text-anchor="middle"
-          font-family="'Arial Black', Impact, 'Liberation Sans', 'DejaVu Sans', sans-serif"
-          font-size="22" font-weight="900" font-style="italic"
-          fill="#FFEB3B">All the news that prints to fit</text>
+          font-family="Arial Black" font-size="22" font-weight="900"
+          font-style="italic" fill="#FFEB3B">All the news that prints to fit</text>
   </g>
 """
 
 
 def below_masthead():
     return f"""  <!-- Byline -->
-  <text x="{MARGIN}" y="{BYLINE_Y}" font-family="Georgia, 'Times New Roman', serif"
+  <text x="{MARGIN}" y="{BYLINE_Y}" font-family="Georgia"
         font-size="11" fill="#000">Today 27th 2026</text>
   <text x="{W - MARGIN}" y="{BYLINE_Y}" text-anchor="end"
-        font-family="Georgia, 'Times New Roman', serif"
+        font-family="Georgia"
         font-size="11" fill="#000">Bob Smith</text>
   <!-- Thick line under masthead -->
   <line x1="{MARGIN}" y1="{THICK_LINE_Y}" x2="{W - MARGIN}" y2="{THICK_LINE_Y}"
@@ -245,7 +217,7 @@ def column_headers_and_dividers():
         cx = COL_X[i] + COL_W / 2
         out.append(
             f'  <text x="{cx}" y="{COL_HDR_Y}" text-anchor="middle" '
-            f'font-family="Georgia, \'Times New Roman\', serif" '
+            f'font-family="Georgia" '
             f'font-size="12" font-weight="bold" fill="#000">{title}</text>'
         )
     out.append("  <!-- Vertical column dividers -->")
@@ -294,7 +266,7 @@ def image_placeholders():
             )
     out.append(
         f'  <text x="{PALM_X + PALM_W / 2}" y="{PALM_Y + PALM_H - 5}" '
-        f'text-anchor="middle" font-family="Georgia, serif" font-size="6.5" '
+        f'text-anchor="middle" font-family="Georgia" font-size="6.5" '
         f'fill="#444">[ palm trees on beach ]</text>'
     )
 
@@ -326,12 +298,12 @@ def image_placeholders():
     )
     out.append(
         f'  <text x="{cx}" y="{cy + 30}" text-anchor="middle" '
-        f'font-family="Georgia, serif" font-size="14" font-weight="bold" '
+        f'font-family="Georgia" font-size="14" font-weight="bold" '
         f'letter-spacing="3" fill="#2C5F2D">I S L A N D</text>'
     )
     out.append(
         f'  <text x="{cx}" y="{MAP_Y + MAP_H - 8}" text-anchor="middle" '
-        f'font-family="Georgia, serif" font-size="7" '
+        f'font-family="Georgia" font-size="7" '
         f'fill="#666">[ map of the island ]</text>'
     )
     return "\n".join(out) + "\n"
