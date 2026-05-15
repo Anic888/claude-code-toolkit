@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-label="Claude Code Toolkit — production-tested skills, plugins, hooks, and MCP integrations">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0b1f"/>
+      <stop offset="100%" stop-color="#1e1a3a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="hex1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#6d28d9" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="hex2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="hex3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#be185d" stop-opacity="0.6"/>
+    </linearGradient>
+    <linearGradient id="hex4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.6"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.4" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <rect width="1200" height="320" fill="url(#grid)"/>
+  <rect y="316" width="1200" height="4" fill="url(#accent)"/>
+
+  <!-- Hex cluster — left side -->
+  <g transform="translate(120,80)" stroke-width="2">
+    <polygon points="60,0 120,35 120,105 60,140 0,105 0,35" fill="url(#hex1)" stroke="#8b5cf6"/>
+    <text x="60" y="78" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">skills</text>
+    <text x="60" y="98" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="11" fill="#e9d5ff">180+</text>
+  </g>
+
+  <g transform="translate(230,150)" stroke-width="2">
+    <polygon points="60,0 120,35 120,105 60,140 0,105 0,35" fill="url(#hex2)" stroke="#06b6d4"/>
+    <text x="60" y="78" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">plugins</text>
+    <text x="60" y="98" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="11" fill="#cffafe">29</text>
+  </g>
+
+  <g transform="translate(120,220)" stroke-width="2">
+    <polygon points="60,0 120,35 120,105 60,140 0,105 0,35" fill="url(#hex3)" stroke="#ec4899"/>
+    <text x="60" y="58" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">subagents</text>
+    <text x="60" y="78" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="11" fill="#fce7f3">19</text>
+  </g>
+
+  <g transform="translate(340,80)" stroke-width="2">
+    <polygon points="60,0 120,35 120,105 60,140 0,105 0,35" fill="url(#hex4)" stroke="#f59e0b"/>
+    <text x="60" y="78" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">MCP</text>
+    <text x="60" y="98" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="11" fill="#fef3c7">15+</text>
+  </g>
+
+  <!-- Typography column -->
+  <g transform="translate(540,90)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="46" font-weight="800" fill="#ffffff" letter-spacing="-1">Claude Code Toolkit</text>
+    <text x="0" y="38" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#a78bfa">Production-tested skills · plugins · hooks · MCP integrations</text>
+
+    <g transform="translate(0,72)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#d4d4d8">
+      <rect x="0" y="0" width="540" height="32" rx="6" fill="#0a0814" stroke="#3b2a5e"/>
+      <text x="14" y="21" fill="#8b5cf6">$</text>
+      <text x="30" y="21" fill="#06b6d4">/plugin</text>
+      <text x="84" y="21" fill="#e5e7eb"> marketplace add Anic888/claude-code-toolkit</text>
+    </g>
+
+    <g transform="translate(0,124)" font-family="ui-sans-serif, system-ui, -apple-system, sans-serif" font-size="12" fill="#9ca3af">
+      <circle cx="6" cy="-3" r="4" fill="#10b981"/>
+      <text x="18" y="0">Battle-tested in production · MIT licensed · 1-line install</text>
+    </g>
+  </g>
+
+  <!-- Connector arcs (hex cluster ↔ title) -->
+  <g stroke="url(#accent)" stroke-width="1.2" stroke-opacity="0.4" fill="none" stroke-dasharray="3,4">
+    <path d="M 470 145 Q 510 110 540 110"/>
+    <path d="M 470 220 Q 510 180 540 170"/>
+  </g>
+</svg>
