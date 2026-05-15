@@ -1,32 +1,147 @@
-<p align="center">
-  <img src="assets/banner.png" alt="Claude Code Toolkit" width="100%" />
-</p>
+<div align="center">
 
-<h1 align="center">Claude Code Toolkit</h1>
+<img src="docs/images/banner.svg" alt="Claude Code Toolkit — production-tested skills, plugins, hooks, and MCP integrations" width="900"/>
 
-<p align="center">
-  <strong>Production-tested skills, plugins, hooks, and MCP integrations for Claude Code — Anthropic's agentic coding CLI.</strong>
-</p>
+[![Skills](https://img.shields.io/badge/skills-180+-8B5CF6.svg)](./SKILLS.md)
+[![Plugins](https://img.shields.io/badge/plugins-29-06B6D4.svg)](./PLUGINS.md)
+[![Subagents](https://img.shields.io/badge/subagents-19-EC4899.svg)](./SUBAGENTS.md)
+[![MCP Servers](https://img.shields.io/badge/MCP_servers-15+-F59E0B.svg)](./PLUGINS.md#mcp-servers)
+[![Platform](https://img.shields.io/badge/platform-macOS_|_Linux_|_WSL-lightgrey.svg)](#-quick-start)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
-[![Skills](https://img.shields.io/badge/skills-180+-8B5CF6)](./SKILLS.md)
-[![Plugins](https://img.shields.io/badge/plugins-29-06B6D4)](./PLUGINS.md)
-[![Subagents](https://img.shields.io/badge/subagents-19-EC4899)](./SUBAGENTS.md)
-[![MCP Servers](https://img.shields.io/badge/MCP_servers-15+-F59E0B)](./PLUGINS.md#mcp-servers)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+**Turn Claude Code from a smart autocomplete into a full development operations platform.**
 
----
-
-## What Is This?
-
-A curated collection of **skills, plugins, hooks, and MCP server configurations** that turn Claude Code from a smart autocomplete into a full development operations platform.
-
-This repo documents a real-world power-user setup — including **custom-built tools** purpose-designed for gaps that existing skills don't cover.
+</div>
 
 ---
 
-## Custom-Built Tools
+## Why this exists
 
-These are tools I built from scratch to solve real problems I kept hitting during development. Each one is battle-tested in production.
+Out of the box, Claude Code is a great agentic CLI. But to make it really earn its keep on a working stack, you need three things it doesn't ship with:
+
+1. **Domain expertise loaded as skills** — slash-callable workflows that know your security tools, your i18n quirks, your deploy targets.
+2. **Vendor integrations as plugins and MCP servers** — talking to GitHub, Supabase, Vercel, Sentry, Stripe, RevenueCat, Figma without ad-hoc shell glue.
+3. **Hooks that prevent the same mistake twice** — pre-deploy gates, no-self-signed-keystore guards, no-Co-Authored-By rules — enforced by the runtime, not the model.
+
+This repo is one engineer's real-world setup, packaged so you can adopt the whole thing in one command — or cherry-pick the parts you want.
+
+---
+
+## What's inside
+
+```mermaid
+flowchart LR
+    subgraph Sources["📚 Source marketplaces"]
+        Off[Anthropic official]
+        Tob[Trail of Bits skills]
+        Custom[Custom builds]
+    end
+
+    subgraph Toolkit["🧰 claude-code-toolkit"]
+        Skills["⚡ Skills · 180+"]
+        Plugins["📦 Plugins · 29"]
+        Subagents["🤖 Subagents · 19"]
+        MCP["🔌 MCP servers · 15+"]
+        Hooks["🪝 Hooks"]
+    end
+
+    subgraph Runtime["🤖 Claude Code session"]
+        CC[claude CLI]
+        SlashCmd["/skill-name"]
+        DeployGate[PreToolUse gate]
+    end
+
+    Off --> Plugins
+    Tob --> Plugins
+    Custom --> Skills
+    Custom --> Hooks
+
+    Skills --> SlashCmd
+    Plugins --> SlashCmd
+    Plugins --> MCP
+    MCP --> CC
+    Subagents --> CC
+    Hooks --> DeployGate
+    DeployGate --> CC
+    SlashCmd --> CC
+
+    style Toolkit fill:#1e1a3a,color:#e9d5ff,stroke:#8b5cf6
+    style Runtime fill:#0a0814,color:#06b6d4,stroke:#06b6d4
+    style Sources fill:#1f1410,color:#fbbf24,stroke:#f59e0b
+```
+
+<div align="center">
+  <img src="docs/images/architecture.svg" alt="Claude Code Toolkit architecture diagram" width="800"/>
+  <br/>
+  <sub><i>The four integration layers — each independently installable.</i></sub>
+</div>
+
+| Layer | What it does | Where it lives |
+|---|---|---|
+| **⚡ Skills** | Slash-callable expert workflows (`/seo-audit`, `/debugging-code`, `/imagen`). Loaded on demand. | `~/.claude/skills/` |
+| **📦 Plugins** | Bundles of skills + vendor MCPs + subagents (Vercel, Supabase, Sentry, Stripe…). | `~/.claude/plugins/` |
+| **🪝 Hooks** | `PreToolUse` gates that block known-bad commands (e.g. unaudited deploys). | `~/.claude/settings.json` + `hooks/` |
+| **🔌 MCP servers** | Live vendor APIs Claude can call: Figma, Canva, Supabase, Sentry, Stripe, Vercel, RevenueCat, PostHog… | `~/.claude/mcp.json` |
+| **🤖 Subagents** | Specialized roles the main agent delegates to (whimsy-injector, design-critic, mobile-app-builder). | `~/.claude/agents/` |
+
+---
+
+## 🚀 Quick start
+
+### One-shot install (recommended)
+
+The bootstrap installer registers two marketplaces (Anthropic official + Trail of Bits security skills), installs 29 official plugins + 33 Trail of Bits plugins, clones the public custom skills, downloads the contains-studio subagents, and copies the deploy hook.
+
+```bash
+# macOS / Linux / WSL
+git clone https://github.com/Anic888/claude-code-toolkit.git
+cd claude-code-toolkit
+./install.sh
+```
+
+```powershell
+# Windows (PowerShell 5.1+)
+git clone https://github.com/Anic888/claude-code-toolkit.git
+cd claude-code-toolkit
+./install.ps1
+```
+
+After it finishes:
+
+1. Restart Claude Code so plugins load.
+2. Re-authenticate MCP connectors via the claude.ai web UI (Canva, Figma, Hugging Face, Supabase, Vercel, Wix).
+3. Add the predeploy-audit hook to `~/.claude/settings.json` if you want it active (snippet below).
+
+> **Windows note:** the deploy hook is bash. For full parity, run `install.sh` inside WSL2 Ubuntu instead of the native PowerShell installer.
+
+### Manual install (single skill or plugin)
+
+```bash
+# Custom skill
+git clone https://github.com/Anic888/russian-text-quality.git
+ln -s $(pwd)/russian-text-quality ~/.claude/skills/russian-text-quality
+
+# Plugin from Anthropic marketplace
+claude plugin install superpowers@claude-plugins-official
+
+# Plugin from Trail of Bits marketplace
+claude plugin marketplace add trailofbits/skills
+claude plugin install firebase-apk-scanner@trailofbits
+```
+
+### Add the deploy hook
+
+```bash
+cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
+chmod +x ~/.claude/hooks/predeploy-audit-gate.sh
+# Then add the hook config to ~/.claude/settings.json (see Hook section below)
+```
+
+---
+
+## Custom-built tools
+
+These are tools built from scratch to solve gaps existing skills don't cover. Each one is battle-tested in production.
 
 ### [russian-text-quality](https://github.com/Anic888/russian-text-quality)
 
@@ -49,8 +164,6 @@ These are tools I built from scratch to solve real problems I kept hitting durin
 /russian-text-quality
 ```
 
----
-
 ### [predeploy-audit](https://github.com/Anic888/predeploy-audit-nextjs)
 
 **Claude Code skill + CLI scanner + deploy hook** — A tiny, fast, low-noise pre-deploy security audit for vibe-coded Next.js apps.
@@ -58,14 +171,14 @@ These are tools I built from scratch to solve real problems I kept hitting durin
 | # | Check | Severity |
 |---|---|---|
 | C1 | `.env*` files tracked in git | Critical |
-| C2 | `.env*` left in git history | Critical |
-| C3 | Hardcoded secrets (OpenAI / Stripe / Supabase / AWS / GitHub / Google) | Critical |
-| C4 | `NEXT_PUBLIC_*` variables containing secrets | Critical |
-| C5 | Supabase service-role key in client-reachable code | Critical |
-| C6 | Stripe webhook handler missing signature verification | Critical |
-| C7 | Supabase tables without Row-Level Security | Critical |
-| C8 | Vulnerable Next.js version (hosting-platform aware severity) | Critical/Low |
-| C9 | `remotePatterns` wildcard SSRF surface | High |
+| C2 | `.env*` left in git history (after deletion) | Critical |
+| C3 | Hardcoded OpenAI / Anthropic / Stripe / Supabase / AWS / GitHub / Google keys | Critical |
+| C4 | `NEXT_PUBLIC_*` / `VITE_*` / `REACT_APP_*` variables containing secrets | Critical |
+| C5 | Supabase service-role key referenced from client-reachable code | Critical |
+| C6 | Stripe webhook handler missing `stripe.webhooks.constructEvent` | Critical |
+| C7 | Supabase tables created without Row-Level Security | Critical |
+| C8 | Vulnerable Next.js version — with hosting-platform aware severity | Critical / Low |
+| C9 | `remotePatterns` wildcard `**` in `next.config.*` | High |
 
 - **~80 ms**, zero dependencies, deterministic
 - Tri-state outcomes (finding / uncertain / clean) — never produces a finding it can't defend
@@ -76,8 +189,6 @@ These are tools I built from scratch to solve real problems I kept hitting durin
 ```bash
 node predeploy-audit.mjs /path/to/your/app
 ```
-
----
 
 ### [predeploy-audit-gate.sh](./hooks/predeploy-audit-gate.sh)
 
@@ -90,11 +201,11 @@ node predeploy-audit.mjs /path/to/your/app
 
 ---
 
-## Installed Skills (93+)
+## Installed skills (180+)
 
 Full catalog with descriptions: **[SKILLS.md](./SKILLS.md)**
 
-### By Category
+### By category
 
 | Category | Count | Highlights |
 |---|---|---|
@@ -113,7 +224,7 @@ Full catalog with descriptions: **[SKILLS.md](./SKILLS.md)**
 
 ---
 
-## Installed Plugins (29)
+## Installed plugins (29)
 
 Full details: **[PLUGINS.md](./PLUGINS.md)**
 
@@ -168,7 +279,7 @@ Most subagents come from [contains-studio/agents](https://github.com/contains-st
 
 ---
 
-## MCP Servers (15+)
+## MCP servers (15+)
 
 | Server | Purpose |
 |---|---|
@@ -190,11 +301,30 @@ Most subagents come from [contains-studio/agents](https://github.com/contains-st
 
 ---
 
-## Hook: Pre-Deploy Audit Gate
+## Hook: pre-deploy audit gate
 
 The custom `PreToolUse` hook in [`hooks/predeploy-audit-gate.sh`](./hooks/predeploy-audit-gate.sh) intercepts deploy commands and runs a security scan automatically.
 
-### Intercepted Commands
+```mermaid
+sequenceDiagram
+    participant U as You
+    participant CC as Claude Code
+    participant Hook as predeploy-audit-gate.sh
+    participant Scan as predeploy-audit scanner
+    participant Plat as Vercel / Fly / Railway
+
+    U->>CC: "ship it to prod"
+    CC->>Hook: Bash("vercel --prod")
+    Hook->>Hook: matches deploy pattern?
+    Hook->>Scan: run scan on cwd
+    Scan-->>Hook: findings (or clean)
+    Note over Hook: clean → silent passthrough<br/>findings → surface in context
+    Hook-->>CC: allow tool call
+    CC->>Plat: vercel --prod
+    Plat-->>U: deployment URL
+```
+
+### Intercepted commands
 
 | Platform | Command pattern |
 |---|---|
@@ -205,14 +335,13 @@ The custom `PreToolUse` hook in [`hooks/predeploy-audit-gate.sh`](./hooks/predep
 | Netlify | `netlify deploy --prod` |
 | npm/pnpm/yarn | `*run deploy` |
 
-### How to Install
+### How to install
 
 ```bash
 # 1. Copy the hook script
 cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
 
-# 2. Add to settings.json
-# (or use Claude Code's /update-config command)
+# 2. Add to settings.json (or use Claude Code's /update-config command)
 ```
 
 ```json
@@ -235,82 +364,31 @@ cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
 
 ---
 
-## Quick Start
-
-### One-shot install (recommended)
-
-The bootstrap installer registers two marketplaces (Anthropic official + Trail of Bits security skills), installs 29 official plugins + 33 Trail of Bits plugins, clones the public custom skills, downloads the contains-studio subagents, and copies the deploy hook.
-
-```bash
-# macOS / Linux / WSL
-git clone https://github.com/Anic888/claude-code-toolkit.git
-cd claude-code-toolkit
-./install.sh
-```
-
-```powershell
-# Windows (PowerShell 5.1+)
-git clone https://github.com/Anic888/claude-code-toolkit.git
-cd claude-code-toolkit
-./install.ps1
-```
-
-After it finishes:
-
-1. Restart Claude Code so plugins load.
-2. Re-authenticate MCP connectors via the claude.ai web UI (Canva, Figma, Hugging Face, Supabase, Vercel, Wix).
-3. Add the predeploy-audit hook to `~/.claude/settings.json` if you want it active (snippet below).
-
-> **Windows note:** the deploy hook is bash. For full parity, run `install.sh` inside WSL2 Ubuntu instead of the native PowerShell installer.
-
-### Manual install (single skill or plugin)
-
-```bash
-# Custom skill
-git clone https://github.com/Anic888/russian-text-quality.git
-ln -s $(pwd)/russian-text-quality ~/.claude/skills/russian-text-quality
-
-# Plugin from Anthropic marketplace
-claude plugin install superpowers@claude-plugins-official
-
-# Plugin from Trail of Bits marketplace
-claude plugin marketplace add trailofbits/skills
-claude plugin install firebase-apk-scanner@trailofbits
-```
-
-### Add the Deploy Hook
-
-```bash
-cp hooks/predeploy-audit-gate.sh ~/.claude/hooks/
-chmod +x ~/.claude/hooks/predeploy-audit-gate.sh
-# Then add the hook config to ~/.claude/settings.json (see above)
-```
-
----
-
-## Repository Structure
+## Repository structure
 
 ```
 claude-code-toolkit/
 ├── README.md              # This file
-├── SKILLS.md              # Full skills catalog (100+)
+├── SKILLS.md              # Full skills catalog (180+)
 ├── PLUGINS.md             # 29 plugins & 15+ MCP servers detail
-├── SUBAGENTS.md           # 19 subagents catalog (engineering, marketing, design, product, ops)
+├── SUBAGENTS.md           # 19 subagents catalog
 ├── install.sh             # Bootstrap installer for macOS / Linux / WSL
 ├── install.ps1            # Bootstrap installer for Windows PowerShell
 ├── hooks/
 │   └── predeploy-audit-gate.sh   # Custom PreToolUse deploy hook
+├── docs/images/           # Banner and architecture diagrams
 └── LICENSE
 ```
 
 ---
 
-## Related Projects
+## Related projects
 
 | Project | Description |
 |---|---|
 | [russian-text-quality](https://github.com/Anic888/russian-text-quality) | Claude Code skill for Russian i18n bugs |
 | [predeploy-audit-nextjs](https://github.com/Anic888/predeploy-audit-nextjs) | Pre-deploy security scanner for Next.js |
+| [self-improving-agents](https://github.com/Anic888/self-improving-agents) | Defensive automation: PreToolUse hooks + CVE digest + failure pattern catalog |
 
 ---
 
@@ -326,4 +404,4 @@ If you have a skill, plugin, or hook setup that works well with Claude Code, ope
 
 ## License
 
-MIT
+[MIT](./LICENSE) — use it, fork it, ship it.
